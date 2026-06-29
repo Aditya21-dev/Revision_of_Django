@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #000000;
+            margin: 40px;
+            color: aliceblue;
+        }
+
+        .box {
+            width: 500px;
+            margin: auto;
+            background: rgb(42, 42, 42);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        a {
+            margin-right: 15px;
+            color: aqua;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1 align="center">School Management System</h1>
+
+    <div align="center">
+
+        <a href="/add_student/">Student</a>
+
+        <a href="/add_teacher/">Teacher</a>
+
+        <a href="/add_subject/">Subject</a>
+
+        <a href="/add_class/">Class</a>
+
+        <a href="/add_idcard/">ID Card</a>
+
+    </div>
+
+    <hr>
+
+    <div class="box">
+
+        {% if page == "student" %}
+
+        <h2>Add Student</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text" name="name" placeholder="Student Name">
+
+            <input type="number" name="age" placeholder="Age">
+
+            <select name="classroom">
+
+                {% for c in classes %}
+
+                <option value="{{ c.id }}">{{ c.class_name }}</option>
+
+                {% endfor %}
+
+            </select>
+
+            <label>Subjects</label>
+
+            {% for s in subjects %}
+
+            <input type="checkbox" name="subjects" value="{{ s.id }}">
+
+            {{ s.subject_name }}<br>
+
+            {% endfor %}
+
+            <br>
+
+            <button type="submit">Save Student</button>
+
+        </form>
+
+        {% elif page == "teacher" %}
+
+        <h2>Add Teacher</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text" name="name" placeholder="Teacher Name">
+
+            <input type="number" name="salary" placeholder="Salary">
+
+            <button type="submit">Save Teacher</button>
+
+        </form>
+
+        {% elif page == "subject" %}
+
+        <h2>Add Subject</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text" name="subject_name" placeholder="Subject Name">
+
+            <select name="teacher">
+
+                {% for t in teachers %}
+
+                <option value="{{ t.id }}">
+
+                    {{ t.name }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <button type="submit">
+
+                Save Subject
+
+            </button>
+
+        </form>
+
+        {% elif page == "class" %}
+
+        <h2>Add Class</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text" name="class_name" placeholder="Class Name">
+
+            <input type="number" name="room_no" placeholder="Room Number">
+
+            <button type="submit">
+
+                Save Class
+
+            </button>
+
+        </form>
+
+        {% elif page == "idcard" %}
+
+        <h2>Add ID Card</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text" name="card_number" placeholder="Card Number">
+
+            <input type="date" name="issue_date">
+
+            <select name="student">
+
+                {% for s in students %}
+
+                <option value="{{ s.id }}">
+
+                    {{ s.name }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <button type="submit">
+
+                Save ID Card
+
+            </button>
+
+        </form>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
