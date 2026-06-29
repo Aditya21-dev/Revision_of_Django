@@ -1,0 +1,612 @@
+# 🚀 Django Full Flash Summary (Industry Roadmap)
+
+Think of Django as a company.
+
+* **Python** = Language
+* **Django** = Company Manager
+* **Project** = Company
+* **App** = Department
+* **Model** = Database Table
+* **View** = Employee (Business Logic)
+* **Template** = UI (HTML)
+* **URL** = Receptionist
+* **Browser** = Customer
+
+---
+
+# 1. Install Python
+
+```bash
+python --version
+```
+
+---
+
+# 2. Create Project Folder
+
+```
+Practice/
+│
+└── Revision_Django/
+    │
+    └── Intro_and_PORT/
+```
+
+`Revision_Django` is only a container.
+
+---
+
+# 3. Create Virtual Environment
+
+```bash
+python -m venv env
+```
+
+Creates
+
+```
+env/
+```
+
+---
+
+# 4. Activate Virtual Environment
+
+### CMD
+
+```cmd
+env\Scripts\activate
+```
+
+### PowerShell
+
+```powershell
+env\Scripts\Activate.ps1
+```
+
+Prompt becomes
+
+```
+(env)
+```
+
+Now every package installs inside **env** only.
+
+---
+
+# 5. Install Django
+
+```bash
+pip install django
+```
+
+Check
+
+```bash
+django-admin --version
+```
+
+---
+
+# 6. Create Project
+
+```bash
+django-admin startproject myproject .
+```
+
+`.` means
+
+> Create project in current folder.
+
+---
+
+Creates
+
+```
+manage.py
+
+myproject/
+    settings.py
+    urls.py
+    asgi.py
+    wsgi.py
+```
+
+---
+
+# 7. Run Server
+
+```bash
+python manage.py runserver
+```
+
+Open
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# 8. Create App
+
+```bash
+python manage.py startapp home
+```
+
+Creates
+
+```
+home/
+
+admin.py
+
+apps.py
+
+models.py
+
+views.py
+
+tests.py
+
+migrations/
+```
+
+---
+
+# 9. Register App
+
+settings.py
+
+```python
+INSTALLED_APPS = [
+    ...
+    "home",
+]
+```
+
+---
+
+# 10. Create View
+
+views.py
+
+```python
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello")
+```
+
+---
+
+# 11. URL Mapping
+
+urls.py
+
+```python
+from home import views
+
+urlpatterns = [
+    path("", views.home),
+]
+```
+
+Browser
+
+↓
+
+URL
+
+↓
+
+View
+
+↓
+
+Response
+
+---
+
+# 12. Templates
+
+Create
+
+```
+templates/
+
+index.html
+```
+
+View
+
+```python
+return render(request,"index.html")
+```
+
+---
+
+# 13. Static Files
+
+Create
+
+```
+static/
+
+css/
+
+images/
+
+js/
+```
+
+settings.py
+
+```
+STATIC_URL="static/"
+```
+
+HTML
+
+```html
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+```
+
+---
+
+# 14. Forms
+
+HTML
+
+```html
+<form method="POST">
+```
+
+Always
+
+```html
+{% csrf_token %}
+```
+
+View
+
+```python
+if request.method=="POST":
+```
+
+Access
+
+```python
+request.POST["name"]
+```
+
+or
+
+```python
+request.POST.get("name")
+```
+
+---
+
+# 15. Checkbox
+
+```python
+request.POST.getlist("language")
+```
+
+---
+
+# 16. Radio Button
+
+```python
+request.POST["gender"]
+```
+
+---
+
+# 17. File Upload
+
+HTML
+
+```html
+enctype="multipart/form-data"
+```
+
+View
+
+```python
+request.FILES["image"]
+```
+
+---
+
+# 18. Redirect
+
+```python
+return redirect("/")
+```
+
+---
+
+# 19. Database
+
+Create Model
+
+```python
+class Student(models.Model):
+```
+
+Migration
+
+```bash
+python manage.py makemigrations
+
+python manage.py migrate
+```
+
+---
+
+# 20. ORM
+
+Create
+
+```python
+Student.objects.create()
+```
+
+Read
+
+```python
+Student.objects.all()
+```
+
+Update
+
+```python
+Student.objects.filter(id=id).update()
+```
+
+Delete
+
+```python
+Student.objects.get(id=id).delete()
+```
+
+---
+
+# 21. Admin Panel
+
+Create Superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+Run
+
+```
+localhost:8000/admin
+```
+
+---
+
+# 22. Register Model
+
+admin.py
+
+```python
+admin.site.register(Student)
+```
+
+---
+
+# 23. Template Inheritance
+
+base.html
+
+```html
+{% block content %}
+
+{% endblock %}
+```
+
+Child
+
+```html
+{% extends "base.html" %}
+
+{% block content %}
+
+{% endblock %}
+```
+
+---
+
+# 24. URL Namespace
+
+app
+
+```
+app_name="home"
+```
+
+Reverse
+
+```python
+{% url 'home:index' %}
+```
+
+---
+
+# 25. Dynamic URL
+
+```python
+path("student/<int:id>/",views.student)
+```
+
+View
+
+```python
+def student(request,id):
+```
+
+---
+
+# 26. Context
+
+```python
+context={
+"name":"Adi"
+}
+```
+
+```python
+return render(request,"index.html",context)
+```
+
+HTML
+
+```html
+{{ name }}
+```
+
+---
+
+# 27. Template Loop
+
+```html
+{% for i in students %}
+```
+
+---
+
+# 28. Condition
+
+```html
+{% if %}
+```
+
+---
+
+# 29. Include
+
+```html
+{% include "navbar.html" %}
+```
+
+---
+
+# 30. Commands
+
+Run
+
+```bash
+python manage.py runserver
+```
+
+Migration
+
+```bash
+python manage.py makemigrations
+```
+
+Apply
+
+```bash
+python manage.py migrate
+```
+
+Create App
+
+```bash
+python manage.py startapp appname
+```
+
+Shell
+
+```bash
+python manage.py shell
+```
+
+Superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+Collect Static
+
+```bash
+python manage.py collectstatic
+```
+
+---
+
+# 31. Project Structure
+
+```
+Revision_Django
+│
+├── Intro_and_PORT
+│   │
+│   ├── env
+│   ├── manage.py
+│   ├── myproject
+│   ├── home
+│   ├── templates
+│   ├── static
+│   ├── media
+│   ├── db.sqlite3
+│   └── requirements.txt
+│
+├── CRUD
+│
+├── Authentication
+│
+└── REST_API
+```
+
+---
+
+# 🎯 Golden Rules
+
+* ✅ One **`venv` per project**.
+* ✅ One Django project can contain **multiple apps**.
+* ✅ Never install packages globally if you're using `venv`.
+* ✅ Always activate `env` before working.
+* ✅ Always add `{% csrf_token %}` in POST forms.
+* ✅ Use `render()` for HTML and `redirect()` after successful POST requests.
+* ✅ Keep `templates`, `static`, and `media` organized.
+* ✅ Run `makemigrations` before `migrate` whenever models change.
+* ✅ Use Git and a `.gitignore` to exclude `env/`, `__pycache__/`, and `db.sqlite3` (if appropriate for your project).
+
+This summary covers the complete workflow from setting up a Django project to building, styling, handling forms, using the database, and organizing projects the way most professional Django developers do.
+
+
+
+
+# PORT CHANGE METHODS :- 
+
+1 . python manage.py runserver 9000 
+
+2. Lib\
+    └── site-packages\
+        └── django\
+            └── core\
+                └── management\
+                    └── commands\
+                        └── runserver.py
+
+    class Command(BaseCommand):
+    help = "Starts a lightweight web server for development."
+
+    stealth_options = ("shutdown_message",)
+    suppressed_base_arguments = {"--verbosity", "--traceback"}
+
+    default_addr = "127.0.0.1"
+    default_addr_ipv6 = "::1"
+    default_port = "8000"  <---- change this code with your required port number 
+    protocol = "http"
+    server_cls = WSGIServer
