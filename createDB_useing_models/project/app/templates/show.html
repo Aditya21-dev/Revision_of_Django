@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Students</title>
+
+    <style>
+        table {
+
+            border-collapse: collapse;
+
+            width: 80%;
+
+            margin: auto;
+
+        }
+
+        td,
+        th {
+
+            border: 1px solid black;
+
+            padding: 10px;
+
+            text-align: center;
+
+        }
+
+        th {
+
+            background: steelblue;
+
+            color: white;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1 align="center">Student List</h1>
+
+    <table>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Name</th>
+
+            <th>Age</th>
+
+            <th>Email</th>
+
+            <th>Course</th>
+
+            <th>City</th>
+
+        </tr>
+
+        {% for student in students %}
+
+        <tr>
+
+            <td>{{ student.id }}</td>
+
+            <td>{{ student.name }}</td>
+
+            <td>{{ student.age }}</td>
+
+            <td>{{ student.email }}</td>
+
+            <td>{{ student.course }}</td>
+
+            <td>{{ student.city }}</td>
+
+        </tr>
+
+        {% empty %}
+
+        <tr>
+
+            <td colspan="6">
+
+                No Students Found
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>
