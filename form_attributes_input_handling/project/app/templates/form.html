@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form Practice</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f2f2f2;
+            padding:30px;
+        }
+
+        form{
+            width:700px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0px 0px 10px gray;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        label{
+            font-weight:bold;
+        }
+
+        input, textarea, select{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            margin-bottom:15px;
+            box-sizing:border-box;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"]{
+            width:auto;
+        }
+
+        button{
+            padding:10px 20px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Complete HTML Form</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <!-- Text -->
+    <label>Name</label>
+    <input
+        type="text"
+        name="name"
+        placeholder="Enter your name"
+        required
+        autofocus
+        minlength="3"
+        maxlength="30">
+
+    <!-- Email -->
+    <label>Email</label>
+    <input
+        type="email"
+        name="email"
+        placeholder="Enter email">
+
+    <!-- Password -->
+    <label>Password</label>
+    <input
+        type="password"
+        name="password"
+        placeholder="Password">
+
+    <!-- Number -->
+    <label>Age</label>
+    <input
+        type="number"
+        name="age"
+        min="1"
+        max="100"
+        step="1">
+
+    <!-- Tel -->
+    <label>Phone</label>
+    <input
+        type="tel"
+        name="phone"
+        placeholder="9876543210">
+
+    <!-- URL -->
+    <label>Website</label>
+    <input
+        type="url"
+        name="website"
+        placeholder="https://example.com">
+
+    <!-- Search -->
+    <label>Search</label>
+    <input
+        type="search"
+        name="search">
+
+    <!-- Date -->
+    <label>Date</label>
+    <input type="date" name="date">
+
+    <!-- Time -->
+    <label>Time</label>
+    <input type="time" name="time">
+
+    <!-- Datetime -->
+    <label>Date Time</label>
+    <input type="datetime-local" name="datetime">
+
+    <!-- Month -->
+    <label>Month</label>
+    <input type="month" name="month">
+
+    <!-- Week -->
+    <label>Week</label>
+    <input type="week" name="week">
+
+    <!-- Color -->
+    <label>Favourite Color</label>
+    <input type="color" name="color">
+
+    <!-- Range -->
+    <label>Experience</label>
+    <input
+        type="range"
+        name="experience"
+        min="0"
+        max="10">
+
+    <!-- File -->
+    <label>Upload File</label>
+    <input type="file" name="file">
+
+    <!-- Hidden -->
+    <input
+        type="hidden"
+        name="userid"
+        value="101">
+
+    <!-- Radio -->
+    <label>Gender</label><br>
+
+    <input type="radio" name="gender" value="Male">
+    Male
+
+    <input type="radio" name="gender" value="Female">
+    Female
+
+    <input type="radio" name="gender" value="Other">
+    Other
+
+    <br><br>
+
+    <!-- Checkbox -->
+    <label>Skills</label><br>
+
+    <input type="checkbox" name="python">
+    Python
+
+    <input type="checkbox" name="java">
+    Java
+
+    <input type="checkbox" name="django">
+    Django
+
+    <br><br>
+
+    <!-- Select -->
+    <label>City</label>
+
+    <select name="city">
+
+        <option>Select City</option>
+
+        <option>Bhopal</option>
+
+        <option>Indore</option>
+
+        <option>Delhi</option>
+
+        <option>Mumbai</option>
+
+    </select>
+
+    <!-- Textarea -->
+    <label>Address</label>
+
+    <textarea
+        name="address"
+        rows="5"
+        placeholder="Enter address"></textarea>
+
+    <!-- Readonly -->
+    <label>Country</label>
+
+    <input
+        type="text"
+        value="India"
+        readonly>
+
+    <!-- Disabled -->
+    <label>State</label>
+
+    <input
+        type="text"
+        value="Madhya Pradesh"
+        disabled>
+
+    <!-- Buttons -->
+
+    <button type="submit">Submit</button>
+
+    <button type="reset">Reset</button>
+
+    <button type="button">Normal Button</button>
+
+</form>
+
+</body>
+</html>
