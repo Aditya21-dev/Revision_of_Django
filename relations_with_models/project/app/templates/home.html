@@ -7,35 +7,148 @@
     <title>School Management</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, sans-serif;
+        }
+
         body {
-            font-family: Arial;
-            background: #000000;
-            margin: 40px;
-            color: aliceblue;
+            background: #0d1117;
+            color: #fff;
+            min-height: 100vh;
+            padding: 40px;
+        }
+        
+        a {
+            color: rgb(255, 63, 201);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #58a6ff;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            padding: 10px 20px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            background: #238636;
         }
 
         .box {
-            width: 500px;
+            width: 550px;
             margin: auto;
-            background: rgb(42, 42, 42);
-            padding: 20px;
-            border-radius: 10px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .5);
         }
 
-        input,
+        h2 {
+            margin-bottom: 20px;
+            color: #58a6ff;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
         select {
+
             width: 100%;
-            padding: 10px;
+            padding: 12px;
+            margin: 12px 0;
+
+            background: #0d1117;
+            color: white;
+
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        select:focus {
+
+            border-color: #58a6ff;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Checkbox Section */
+
+        .subject-box {
+
+            margin-top: 10px;
+
+        }
+
+        .subject-box label {
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
             margin: 10px 0;
+            cursor: pointer;
+
+        }
+
+        .subject-box input[type="checkbox"] {
+
+            width: 18px;
+            height: 18px;
+
         }
 
         button {
-            padding: 10px 20px;
+
+            width: 100%;
+            padding: 13px;
+
+            margin-top: 25px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #238636;
+
+            color: white;
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            transition: .3s;
         }
 
-        a {
-            margin-right: 15px;
-            color: aqua;
+        button:hover {
+
+            background: #2ea043;
+
         }
     </style>
 

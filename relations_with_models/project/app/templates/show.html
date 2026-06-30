@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Students Data</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+
+        body {
+            background: #0d1117;
+            color: white;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #58a6ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #161b22;
+        }
+
+        th,
+        td {
+            border: 1px solid #30363d;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background: #21262d;
+            color: #58a6ff;
+        }
+
+        tr:nth-child(even) {
+            background: #1b1f24;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            color: aqua;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Students Information</h1>
+
+    <table>
+
+        <tr>
+
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Class (ForeignKey)</th>
+            <th>Subjects (ManyToMany)</th>
+            <th>Teachers</th>
+            <th>ID Card (OneToOne)</th>
+
+        </tr>
+
+        {% for student in students %}
+
+        <tr>
+
+            <td>{{ student.id }}</td>
+
+            <td>{{ student.name }}</td>
+
+            <td>{{ student.age }}</td>
+
+            <!-- ForeignKey -->
+
+            <td>
+
+                {{ student.Class_room }}
+
+            </td>
+
+            <!-- ManyToMany -->
+
+            <td>
+
+                <ul>
+
+                    {% for subject in student.subjects.all %}
+
+                    <li>{{ subject.subject_name }}</li>
+
+                    {% empty %}
+
+                    <li>No Subject</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </td>
+
+            <!-- Teacher of every subject -->
+
+            <td>
+
+                <ul>
+
+                    {% for subject in student.subjects.all %}
+
+                    <li>
+
+                        {{ subject.teacher.name }}
+
+                    </li>
+
+                    {% empty %}
+
+                    <li>No Teacher</li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </td>
+
+            <!-- OneToOne -->
+
+            <td>
+
+                {{ student.idcard.card_number }}
+
+            </td>
+
+        </tr>
+
+        {% empty %}
+
+        <tr>
+
+            <td colspan="7">
+
+                No Student Found
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br><br>
+
+    <center>
+
+        <a href="/">⬅ Back to Home</a>
+
+    </center>
+
+</body>
+
+</html>
