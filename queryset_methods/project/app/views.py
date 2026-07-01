@@ -79,7 +79,7 @@ def values_list_data(request):
 def get_data(request):
     try:
         data = Student.objects.get(id=1)
-        return HttpResponse(data.name)
+        return HttpResponse(data)
     except Exception as e:
         return HttpResponse(str(e))
 
@@ -128,7 +128,7 @@ def exists_data(request):
 
 # 14. update()
 def update_data(request):
-    Student.objects.filter(id=1).update(marks=100)
+    Student.objects.filter(id=2).update(marks=100)
     return HttpResponse("Updated Successfully")
 
 
@@ -141,15 +141,15 @@ def delete_data(request):
 # 16. get_or_create()
 def get_or_create_data(request):
     student, created = Student.objects.get_or_create(
-        email="abc@gmail.com",
+        email="mahakoi@gmail.com",
         defaults={
-            "name": "ABC",
+            "name": "mahak",
             "age": 20,
             "city": "Bhopal",
-            "course": "Python",
+            "course": "B.Com",
             "marks": 90,
-            "gender": "Male",
-            "admission_date": "2026-07-01",
+            "gender": "Female",
+            "admission_date": "2006-03-13",
         }
     )
     return HttpResponse(str(created))
@@ -158,9 +158,9 @@ def get_or_create_data(request):
 # 17. update_or_create()
 def update_or_create_data(request):
     student, created = Student.objects.update_or_create(
-        email="abc@gmail.com",
+        email="mahakoi@gmail.com",
         defaults={
-            "marks": 95,
+            "marks": 89,
         }
     )
     return HttpResponse(str(created))
@@ -172,22 +172,22 @@ def bulk_create_data(request):
         Student(
             name="Rahul",
             age=20,
-            email="rahul@gmail.com",
+            email="rahul157@gmail.com",
             city="Bhopal",
             course="Python",
             marks=80,
             gender="Male",
-            admission_date="2026-07-01",
+            admission_date="2006-07-01",
         ),
         Student(
-            name="Aman",
+            name="Man",
             age=21,
-            email="aman@gmail.com",
+            email="Man14@gmail.com",
             city="Indore",
             course="Django",
             marks=85,
             gender="Male",
-            admission_date="2026-07-01",
+            admission_date="2006-07-01",
         ),
     ]
 
