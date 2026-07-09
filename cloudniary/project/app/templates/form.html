@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+
+    <style>
+        body{
+            background: #000;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>User Registration Form</h2>
+
+    <form action="" method="POST" enctype="multipart/form-data"> {% comment %} enctype="multipart/form-data":- this is used for accept files feilds input {% endcomment %}
+        {% csrf_token %}
+
+        <label>Full Name</label><br>
+        <input type="text" name="name"><br><br>
+
+        <label>Email</label><br>
+        <input type="email" name="email"><br><br>
+
+        <label>Phone Number</label><br>
+        <input type="text" name="phone"><br><br>
+
+        <label>Address</label><br>
+        <input type="text" name="address"><br><br>
+
+        <label>Profile Image</label><br>
+        <input type="file" name="image"><br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</body>
+</html>
