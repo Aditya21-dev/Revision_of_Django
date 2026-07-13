@@ -19,6 +19,20 @@ from django.urls import path
 from app import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home , name="home")
+    path("admin/", admin.site.urls),
+
+    # path("", views.home , name="home"),
+    
+
+    path("products/", views.list_product),
+
+    path("products/<int:id>/", views.single_product),
+
+    path("create/", views.create_product),
+
+    path("update/<int:id>/", views.update_product),
+
+    path("patch/<int:id>/", views.patch_product),
+
+    path("delete/<int:id>/", views.delete_product),
 ]
