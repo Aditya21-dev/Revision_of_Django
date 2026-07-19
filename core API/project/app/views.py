@@ -42,7 +42,7 @@ def list_product(req):
         print(type(p_data))
 
         # Python List -> JSON String
-        j_data = json.dumps(p_data)
+        j_data = json.dumps(p_data,default=str)
         print(j_data)
         print(type(j_data))
 
